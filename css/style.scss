@@ -1,0 +1,616 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face{
+    src: url('../fonts/Frozito.ttf');
+    font-family: horus;
+}
+
+$f: flex;
+$sa: space-around;
+$sb: space-between;
+$c: center;
+$fw: wrap;
+$fs: flex-start;
+$fe: flex-end;
+$co: column;
+
+$d0: 1200px;
+$d1: 992px;
+$d2: 768px;
+$d3: 576px;
+$d4: 480px;
+$d5: 380px;
+
+@mixin d0 {
+    @media (max-width: #{$d0}){
+        @content;
+    }
+}
+
+@mixin d1 {
+    @media (max-width: #{$d1}){
+        @content;
+    }
+}
+
+
+@mixin d2 {
+    @media (max-width: #{$d2}){
+        @content;
+    }
+}
+
+@mixin d3 {
+    @media (max-width: #{$d3}){
+        @content;
+    }
+}
+
+@mixin d4 {
+    @media (max-width: #{$d4}){
+        @content;
+    }
+}
+
+@mixin d5 {
+    @media (max-width: #{$d5}){
+        @content;
+    }
+}
+
+// Ovde pocinjem index.html
+
+// sidenav meni
+
+body{
+    position: relative;
+    background-color: #000;
+}
+
+.side{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    display: $f;
+    justify-content: $c;
+    align-items: $c;
+    position: fixed;
+    top: -2000px;
+    transition: all 1s;
+    z-index: 999;
+
+    .closeSide{
+        position: absolute;
+        top: 20%;
+        left: 60%;
+        font-size: 2em;
+
+        @include d2{
+            left: 70%;
+        }
+
+        @include d4{
+            left: 75%;
+        }
+
+        @include d5{
+            top: 16%;
+        }
+        
+        i{
+        color: rgb(69, 206, 69);
+        }
+    }
+
+    ul{
+        list-style-type: none;
+
+        li{
+            margin: 8px 0%;
+            text-align: $c;
+
+            a{
+                text-decoration: none;
+                color: whitesmoke;
+                font-family: horus;
+                font-size: 2em;
+                text-shadow: 1.3px 1.3px rgb(69, 206, 69);
+            }
+        }
+    }
+}
+
+.side1{
+    top: 0px;
+}
+
+.sideCall{
+    color: rgb(109, 219, 82);
+    font-size: 2em;
+    position: fixed;
+    top: 3%;
+    left: 2%;
+    display: none;
+}
+
+
+// Ovde zavrsavam side menu
+
+// Ovde radim pusa back to top
+
+body{
+
+    .arrow{
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        bottom: 3%;
+        right: 2%;
+        display: $f;
+        justify-content: $c;
+        align-items: $c;
+        z-index: 990;
+
+        a{
+            color: whitesmoke;
+            font-size: 1.9em;
+            transition: 0.7s;
+
+            &:hover{
+                color: rgb(81, 223, 81);
+                transform: translateY(-7px);
+            }
+        }
+    }
+}
+
+// Ovde pocinjem glavnu navigaciju
+
+nav{
+    width: 100%;
+    background-color: transparent;
+    display: $f;
+    justify-content: $sa;
+    align-items: $c;
+    position: fixed;
+    top: 0px;
+    transition: 0.5s;
+    z-index: 998;
+
+    .left{
+        width: 40%;
+
+        a{
+
+            img{
+                width: 150px;
+            }
+        }
+    }
+
+    .right{
+        width: 50%;
+        display: $f;
+        justify-content: $c;
+        align-items: $c;
+        font-family: horus;
+
+        ul{
+            width: 100%;
+            display: $f;
+            justify-content: $sa;
+            align-items: $c;
+            list-style-type: none;
+
+            li{
+
+                a{
+                    color: whitesmoke;
+                    font-size: 1.5em;
+                    text-decoration: none;
+                    text-shadow: 1.2px 1.2px rgb(65, 201, 65);
+                    transition: 0.6s;
+
+                    &:hover{
+                        color: rgb(75, 212, 75);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Ovde krece main deo sa coverom
+
+body{
+
+    main{
+        width: 100%;
+        height: 100vh;
+        background-image: url('../images/cover.jpeg');
+        background-size: cover;
+        background-position: $c;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        
+        .darked{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: $f;
+            justify-content: $c;
+            align-items: $c;
+            flex-direction: $co;
+
+            h1{
+                color: rgb(62, 201, 62);
+                font-size: 4em;
+                font-family: horus;
+
+                span{
+                    opacity: 0;
+                    animation-name: blured;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+
+                    &:first-child{
+                        animation-delay: 1s;
+                    }
+
+                    &:nth-child(2){
+                        animation-delay: 1.5s;
+                    }
+
+                    &:nth-child(3){
+                        animation-delay: 2s;
+                    }
+
+                    &:nth-child(4){
+                        animation-delay: 2.5s;
+                    }
+
+                    &:last-child{
+                        animation-delay: 3s;
+                    }
+                }
+            }
+
+            h2{
+                opacity: 0;
+                animation-name: show;
+                animation-duration: 2s;
+                animation-delay: 4s;
+                animation-fill-mode: forwards;
+                color: whitesmoke;
+                padding-bottom: 1%;
+            }
+
+            a{
+                opacity: 0;
+                color: yellow;
+                font-size: 2.5em;
+                animation-name: up;
+                animation-duration: 2s;
+                animation-delay: 5s;
+                animation-fill-mode: forwards;
+                transition: 0.6s;
+
+                &:hover{
+                    color: rgb(76, 204, 76);
+                }
+            }
+
+            }
+        }
+    }
+
+    // Ovde krecem sekcija 1
+
+    body{
+
+        .about{
+            margin: 4% 0%;
+            .aboutCont{
+
+                .aboutRow{
+
+                    .aboutCol{
+                        display: $f;
+                        flex-direction: $co;
+                        justify-content: $c;
+                        align-items: $c;
+
+                        h2{
+                            position: relative;
+                            padding-bottom: 3%;
+                            font-family: horus;
+                            font-size: 2em;
+
+                            span{
+                                color: rgb(0, 247, 164);
+                                animation: fluid 1.3s infinite;
+                            }
+                        }
+
+                        p{
+                            font-size: 1.2em;
+                            color: whitesmoke;
+                            text-shadow: 1.2px 1.2px rgb(57, 182, 57);
+                            font-family: horus;
+                        }
+                    }
+
+                    .aboutCol2{
+                        display: $f;
+                        justify-content: $c;
+                        align-items: $c;
+
+                        .gifHolder{
+                            display: $f;
+                            justify-content: $c;
+                            align-items: $c;
+                            width: 100%;
+                            height: 100%;
+
+                            img{
+                                max-width: 100%;
+                                height: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Nargila pocinjem
+
+    body{
+
+        .nargila{
+            margin: 7% 0%;
+
+            h2{
+                text-align: $c;
+                padding: 5% 0%;
+                position: relative;
+                font-size: 2.7em;
+                font-family: horus;
+
+                span{
+                    color: rgb(0, 247, 164);
+                    animation: fluid 1.3s infinite;
+                }
+            }
+
+            .nargilaCont{
+                font-family: horus;
+
+                .nargilaRow{
+
+                    .nargilaCol{
+                        display: $f;
+                        flex-wrap: $fw;
+                        justify-content: $sa;
+                        align-items: $c;
+
+                        .box{
+                            width: 25%;
+                            display: $f;
+                            flex-direction: $co;
+                            justify-content: $sa;
+                            align-items: $c;
+
+                            .imageHolder{
+                                width: 100%;
+                                display: $f;
+                                justify-content: $c;
+                                align-items: $c;
+
+                                img{
+                                    max-width: 100%;
+                                    height: auto;
+                                }
+                            }
+
+                            h3{
+                                font-size: 2em;
+                                padding: 8% 0% 3% 0%;
+                                color: rgb(103, 221, 79);
+                                font-family: horus;
+                            }
+
+                            p{
+                                color: whitesmoke;
+                                font-size: 1.3em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Ovde pocinjem ukusi pusa
+
+    body{
+
+        .ukusi{
+
+            .ukusiCont{
+
+                .ukusiRow{
+
+                    .ukusiCol2{
+
+                        .firstP{
+                            font-size: 1.8em;
+                        }
+
+                        ul{
+
+                            li{
+                                color: rgb(121, 218, 109);
+                                font-size: 1.2em;
+                            }
+                        }
+
+                        .secondP{
+                            font-size: 2em;
+                            text-align: $c;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Ovde krece galerija
+
+    body{
+        
+        .galerija{
+
+            h2{
+                text-align: $c;
+                padding: 5% 0%;
+                position: relative;
+                font-size: 2.7em;
+                font-family: horus;
+
+                span{
+                    color: rgb(0, 247, 164);
+                    animation: fluid 1.3s infinite;
+                }
+            }
+
+            .galerijaRow{
+                margin: 5% 0%;
+
+                .galerijaCol{
+                    display: $f;
+                    justify-content: $sa;
+                    align-items: $c;
+                    flex-wrap: $fw;
+
+                    .galerijaBox{
+                        width: 30%;
+
+                        img{
+                            max-width: 100%;
+                            height: auto;
+                            filter: grayscale(40%);
+                            transition: 0.6s;
+
+                            &:hover{
+                                filter: grayscale(0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Footer
+
+    body{
+
+        .footer{
+            width: 100%;
+            font-family: horus;
+            border-top: 4px solid rgb(73, 196, 73);
+
+            .footerCont{
+
+                .footerRow{
+                    margin: 5% 0%;
+
+                    .footerCol2{
+                        display: $f;
+                        justify-content: $c;
+                        align-items: $c;
+                        flex-direction: $co;
+
+                        p{
+                            text-align: $c;
+                            position: relative;
+                            font-size: 1.5em;
+                            font-family: horus;
+
+                            span{
+                            color: rgb(0, 247, 164);
+                            animation: fluid 1.3s infinite;
+                            }
+                        }
+
+                        ul{
+                            list-style-type: none;
+
+                            li{
+                                margin: 5px 0%;
+                                text-align: $c;
+
+                                a{
+                                    text-align: $c;
+                                    text-decoration: none;
+                                    font-size: 1.4em;
+                                    color: whitesmoke;
+                                    text-shadow: 1.2px 1.2px rgb(70, 185, 70);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .footerRow1{
+
+                    .footerCol3{
+                        display: $f;
+                        justify-content: $c;
+                        align-items: $c;
+
+                        p{
+                            font-size: 1.2em;
+                            color: whitesmoke;
+                            padding: 1.5% 0%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    @keyframes blured {
+	from {opacity: 0; transform: rotateY(200deg); filter: blur(16px);}
+	to {opacity: 1; transform: rotateY(0deg); filter: blur(0px);}
+}
+
+@keyframes show{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+@keyframes up{
+    0%{opacity: 0; transform: translateY(20px);}
+    100%{opacity: 1; transform: translateY(0px);}
+}
+
+@keyframes fluid{
+    0%{
+        text-shadow: -4px -2px 4px rgba(0,255,170,0.7), -2px -2px 4px rgba(0,255,170,0.7), -3px -2px 4px rgba(0,255,170,0.7);
+    }
+    50% {
+        text-shadow: 1px -2.5px 3.8px rgba(0,255,170,0.7), 1px -2.5px 3.8px rgba(0,255,170,0.7), 1px -2.5px 3.8px rgba(0,255,170,0.7);
+    }
+
+    100% {
+        text-shadow: -4px -2px 4px rgba(0,255,170,0.7), -2px -2px 4px rgba(0,255,170,0.7), -3px -2px 4px rgba(0,255,170,0.7);
+    }
+}
